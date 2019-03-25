@@ -10,23 +10,23 @@ are used to predict PTM cross-talk inter proteins, via a
 `random forest <http://scikit-learn.org/stable/modules/ensemble.html#forest>`_ 
 classifier.
 
-1. ``sequence co-evolution``: The coevolution between two the amino acids across 
+1. ``sequence residue co-evolution``: The coevolution between two the amino acids across 
 multiple vertebrates. The multiple sequence alignment data is downloaded from 
 `eggNOG v4.5 <http://eggnogdb.embl.de>`_. Here, the 
 1-`Hamming loss <http://scikit-learn.org/stable/modules/model_evaluation.html#hamming-loss>`_ 
 is used to measure the co-evolution score.
 
-2. ``motif co-conservation``: The +/-4 surrounding amino acids are used to form 
+2. ``sequence motif co-evolution``: The +/-3 surrounding amino acids are used to form 
 the motif for a given PTM locus. The fraction of consistence the this motif in 
 any vertebrate comparing to its human orthologous protein. Based on the two 
 vectors of motif conservation fraction, the co-conservation score is calculated 
 by the mean product of the two vectors. Again, the eggNOG v4.5 is used here.
 
-3. ``PTM co-conservation``: The co-conservation of PTM existence across human, 
+3. ``Co-modification across different species``: The co-conservation of PTM existence across human, 
 mouse and rat. The raw PTM data for these three species is downloaded from 
 `PhosphoSitePlus <https://www.phosphosite.org>`_.
 
-4. ``PTM co-occurrence``: The co-occurrence between the two PTMs across 88 
+4. ``Co-modification across different conditions``: The co-occurrence between the two PTMs across 88 
 tissue, disease and cellline conditions.
 
 Get started
@@ -37,13 +37,21 @@ unzip it, and set the directory as the accordding parameter.
 
 Installation
 ~~~~~~~~~~~~
-The easiest way to install the python platform is using 
-`Anaconda <https://www.anaconda.com/download/>`_ with Python 2.7. 
-We haven't tested it on Python 3 (it may come as an upgraded version).
-Here, PTMXtalk module requires the following packages: ``numpy>=1.12.0``, 
-``scipy>=0.18.1``, ``scikit-learn>=0.17``, ``joblib>=0.11``.
+First, you need a Python environment for supporting packages. The easiest way 
+might be installing the python platform via 
+`Anaconda <https://www.anaconda.com/download/>`_. PTM-X is only compatible with 
+Python 2.7. If you are using Anaconda 3, create a 
+`conda environment <https://conda.io/docs/user-guide/tasks/manage-environments.html>`_ 
+with Python 2.7 and dependent packages as follows,
 
-Download the codes from this github repository [`master.zip <https://github.com/huangyh09/PTM-X/archive/master.zip>`_] 
+::
+
+    conda create --name ptmxPy2 python=2.7 numpy scipy scikit-learn==0.17 joblib==0.11
+    # activate the environment
+    conda activate ptmxPy2
+
+Then clone or download the codes from this github repository 
+[`master.zip <https://github.com/huangyh09/PTM-X/archive/master.zip>`_] 
 and then run the following command line:
 
 ::
